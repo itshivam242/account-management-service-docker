@@ -56,20 +56,27 @@ This command runs a new container from the account-management-service-image imag
 docker run -p 8091:8080 --name account-management-service-container --net mysql-network -e MYSQL_HOST=mysql-container -e MYSQL_PORT=3306 -e MYSQL_DB_NAME=devops -e MYSQL_USER=root -e MYSQL_PASSWORD=root account-management-service-image
 ```
 #### 8. Verify the Application
-
 Once Docker Compose has finished setting up, you can verify the application by accessing the Account Management Service at:
 ```bash
 http://localhost:8091/accounts
 ````
+#### 9. Inspect Running Container
+```bash
+docker inspect account-management-service-container
+````
+#### 10. View Logs of a Running Container
+```bash
+docker logs account-management-service-container
+````
 Check API endpoints below in this file to check application on postman.
-#### 9. Stop and Remove the both Container
+#### 11. Stop and Remove the both Container
 ```bash
 docker stop account-management-service-container
 docker stop mysql-container
 docker rm account-management-service-container
 docker rm mysql-container
 ```
-#### 10.Remove the Docker Network
+#### 12.Remove the Docker Network
 ```bash
 docker network rm mysql-network
 ```
@@ -78,28 +85,28 @@ docker network rm mysql-network
 The following API endpoints are available for managing accounts:
 
 1. **Create a new account**
-    - **HTTP Method:** POST
-    - **Endpoint:** `/accounts`
+   - **HTTP Method:** POST
+   - **Endpoint:** `/accounts`
 
 2. **Add money to an account**
-    - **HTTP Method:** PUT
-    - **Endpoint:** `/accounts/add-money/{accountId}`
+   - **HTTP Method:** PUT
+   - **Endpoint:** `/accounts/add-money/{accountId}`
 
 3. **Withdraw money from an account**
-    - **HTTP Method:** PUT
-    - **Endpoint:** `/accounts/withdraw-money/{accountId}`
+   - **HTTP Method:** PUT
+   - **Endpoint:** `/accounts/withdraw-money/{accountId}`
 
 4. **Get account details by account ID**
-    - **HTTP Method:** GET
-    - **Endpoint:** `/accounts/{accountId}`
+   - **HTTP Method:** GET
+   - **Endpoint:** `/accounts/{accountId}`
 
 5. **Delete an account**
-    - **HTTP Method:** DELETE
-    - **Endpoint:** `/accounts/{accountId}`
+   - **HTTP Method:** DELETE
+   - **Endpoint:** `/accounts/{accountId}`
 
 6. **Delete account by customer ID**
-    - **HTTP Method:** DELETE
-    - **Endpoint:** `/accounts/customers/{customerId}`
+   - **HTTP Method:** DELETE
+   - **Endpoint:** `/accounts/customers/{customerId}`
 
 
 
